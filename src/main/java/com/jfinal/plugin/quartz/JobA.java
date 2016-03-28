@@ -5,11 +5,9 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-import com.jfinal.plugin.collerbind.AutoCollerBindPlugin;
-
 public class JobA implements Job{
     
-    private static Logger logger = Logger.getLogger(AutoCollerBindPlugin.class);
+    private static Logger logger = Logger.getLogger(JobA.class);
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
