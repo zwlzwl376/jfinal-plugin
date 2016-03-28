@@ -16,4 +16,14 @@ public @interface Coller {
      * @return the suggested component name, if any
      */
     String[] value() default {};
+    
+    /**
+     * 
+     * TODO(这里用一句话描述这个方法的作用) 
+     * @Author:ALong (ZengWeiLong)
+     * @return    
+     * String[]
+     * @date 2016年3月28日
+     */
+    String[] views() default "";
 }

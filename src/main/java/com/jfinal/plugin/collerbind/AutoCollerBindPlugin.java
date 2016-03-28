@@ -65,10 +65,20 @@ public class AutoCollerBindPlugin {
             Coller coller = (Coller) classes.getAnnotation(Coller.class);
             if(coller != null){
                String[] strArray = coller.value();
+               String[] views = coller.views();
                if(strArray != null){
-                   for(String maping:strArray){
+                   for(int i = 0 ; i < strArray.length; i++){
+                       String maping = strArray[i];
+                       String view = null;
+                       if(views != null && views.length > i){
+                           view = views[i];
+                       }
                        if(StringUtils.isNotEmpty(maping)){
-                           routes.add(maping, classes);
+                           if(StringUtils.isNotEmpty(view)){
+                               routes.add(maping, classes,view);
+                           }else{
+                               routes.add(maping, classes);
+                           }
                            logger.info(maping + " == > " + classes.getSimpleName());
                        }
                    }
