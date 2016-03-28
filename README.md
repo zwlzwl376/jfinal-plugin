@@ -24,6 +24,18 @@ public class UserController extends Controller {
 
 public class UserController extends Controller {
 
+或
+
+@Coller(value="/user",views="page") 
+
+public class UserController extends Controller {
+
+或
+
+@Coller(value={"/user"},views={"page"})
+
+public class UserController extends Controller {
+
 2.表插件启动：
 
     public void configPlugin(Plugins me) {
