@@ -1,5 +1,7 @@
 #plugin
 
+旧项目地址：https://git.oschina.net/zengweilong/plugin.git
+
 1.路由插件启动:
 
     public void configRoute(Routes me) {
@@ -42,5 +44,4 @@ public class User extends Model<User> {
 不加注解Coller 默认按照路径路由 例如：UserController -- /user
     
 不加注解Table 默认按照类名小写绑定 例如：User -- user 	
-
 
