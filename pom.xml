@@ -3,9 +3,34 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.wl.jfinal</groupId>
 	<artifactId>plugin</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>bind for jfinal2.2</name>
-	<description>auto scanner package</description>	
+	<description>auto scanner package</description>
+	<url>https://git.oschina.net/zwlzwl376/plugin</url>
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>zengweilong</name>
+			<email>zwlzwl376@126.com</email>
+			<organization>zwlzwl376</organization>
+			<organizationUrl>https://git.oschina.net/zwlzwl376/</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>
+        	scm:git:https://git.oschina.net/zwlzwl376/plugin.git
+      	</connection>
+		<developerConnection>
+         	scm:git:https://git.oschina.net/zwlzwl376/plugin.git
+      	</developerConnection>
+		<url>https://git.oschina.net/zwlzwl376/plugin</url>
+		<tag>0.0.1</tag>
+	</scm>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
