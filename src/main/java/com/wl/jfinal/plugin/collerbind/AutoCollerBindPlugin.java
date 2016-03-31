@@ -1,4 +1,4 @@
-package com.jfinal.plugin.collerbind;
+package com.wl.jfinal.plugin.collerbind;
 
 import java.io.File;
 

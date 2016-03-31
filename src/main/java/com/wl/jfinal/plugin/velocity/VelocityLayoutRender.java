@@ -1,4 +1,4 @@
-package com.jfinal.plugin.velocity;
+package com.wl.jfinal.plugin.velocity;
 
 import java.io.IOException;
 import java.io.PrintWriter;

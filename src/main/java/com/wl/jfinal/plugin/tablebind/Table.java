@@ -1,4 +1,4 @@
-package com.jfinal.plugin.tablebind;
+package com.wl.jfinal.plugin.tablebind;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
