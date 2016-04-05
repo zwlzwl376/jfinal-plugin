@@ -19,11 +19,10 @@ public @interface Coller {
     
     /**
      * 
-     * TODO(这里用一句话描述这个方法的作用) 
      * @Author:ALong (ZengWeiLong)
      * @return    
      * String[]
-     * @date 2016年3月28日
+     * @date 2016-3-28
      */
     String[] views() default "";
 }

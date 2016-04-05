@@ -24,12 +24,9 @@ import com.jfinal.render.IMainRenderFactory;
 import com.jfinal.render.Render;
 
 /**
- * 
- * TODO(这里用一句话描述这个类的作用)
- * 
  * @author Along(ZengWeiLong)
  * @ClassName: VelocityLayoutRender
- * @date 2016年3月14日 下午4:14:20
+ * @date 2016-3-14 16:14:20
  *
  */
 public class VelocityLayoutRender extends Render {
@@ -37,17 +34,17 @@ public class VelocityLayoutRender extends Render {
     private static Logger logger = Logger.getLogger(VelocityLayoutRender.class);
     
     private transient static final Properties properties = new Properties();
-    //配置文件
+   
     private static String configfile = "velocity.properties";
-    //默认宏路径
+    
     protected static String libraryDir;
-    //默认宏文件
+    
     protected static String defaultLibrar;
-    //错误模板文件
+    
     protected static String errorTmple;
-    //布局模板路径
+    
     protected static String layoutDir;
-    //布局默认模板
+    
     protected static String defaultLayout;
     
     static{
@@ -82,7 +79,7 @@ public class VelocityLayoutRender extends Render {
      * 
      * @Author:ALong (ZengWeiLong)
      * @param properties void
-     * @date 2016年3月14日
+     * @date 2016-3-14
      */
     public static void setProperties(Properties properties) {
         Set<Entry<Object, Object>> set = properties.entrySet();

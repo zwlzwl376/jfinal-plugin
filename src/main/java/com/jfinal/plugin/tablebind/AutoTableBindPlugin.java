@@ -10,21 +10,19 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
  * Auto scanner tools  for Jfinal2.2
  * @author Along(ZengWeiLong)
  * @ClassName: AutoTableBindPlugin 
- * @date 2016年3月20日 上午10:42:52 
+ * @date 2016-3-20 10:42:52 
  *
  */
 public class AutoTableBindPlugin {
 
     private static Logger logger = Logger.getLogger(AutoTableBindPlugin.class);
-    /**
-     * 实体所在包名
-     */
+
     private String packageName = "";
 
     /**
      * 
      * @Author Along(ZengWeiLong)
-     * @param packageName 所在包名 com.web.entity
+     * @param packageName com.web.entity
      */
     public AutoTableBindPlugin(String packageName) {
         this.packageName = packageName;

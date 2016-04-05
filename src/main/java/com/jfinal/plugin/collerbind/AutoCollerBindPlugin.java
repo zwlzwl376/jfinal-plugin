@@ -11,7 +11,7 @@ import com.jfinal.config.Routes;
  * Auto scanner tools  for Jfinal2.2
  * @author Along(ZengWeiLong)
  * @ClassName: AutoCollerBindPlugin 
- * @date 2016年3月20日 上午10:42:52 
+ * @date 2016-3-20 10:42:52 
  *
  */
 public class AutoCollerBindPlugin {
@@ -25,7 +25,7 @@ public class AutoCollerBindPlugin {
     /**
      * 
      * @Author Along(ZengWeiLong)
-     * @param packageName 所在包名 com.web.entity
+     * @param packageName path com.web.entity
      */
     public AutoCollerBindPlugin(String packageName) {
         this.packageName = packageName;
