@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jfinal</groupId>
 	<artifactId>plugin</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1</version>
 	<name>bind for jfinal2.2</name>
 	<description>auto scanner package</description>
