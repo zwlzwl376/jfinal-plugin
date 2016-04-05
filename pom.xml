@@ -7,7 +7,7 @@
 	<version>0.0.1</version>
 	<name>bind for jfinal2.2</name>
 	<description>auto scanner package</description>
-	<url>https://git.oschina.net/zwlzwl376/plugin</url>
+	<url>https://git.oschina.net/zwlzwl376/jfinal-plugin</url>
 	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
@@ -23,13 +23,9 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>
-        	scm:git:https://git.oschina.net/zwlzwl376/plugin.git
-      	</connection>
-		<developerConnection>
-         	scm:git:https://git.oschina.net/zwlzwl376/plugin.git
-      	</developerConnection>
-		<url>https://git.oschina.net/zwlzwl376/plugin</url>
+		<connection>scm:git:https://git.oschina.net/zwlzwl376/jfinal-plugin.git</connection>
+		<developerConnection>scm:git:https://git.oschina.net/zwlzwl376/jfinal-plugin.git</developerConnection>
+		<url>https://git.oschina.net/zwlzwl376/jfinal-plugin</url>
 		<tag>0.0.1</tag>
 	</scm>
 	<dependencies>
