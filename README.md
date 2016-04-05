@@ -1,4 +1,4 @@
-#plugin
+#jfinal-plugin
 
 旧项目地址：https://git.oschina.net/zengweilong/plugin.git
 
