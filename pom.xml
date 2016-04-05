@@ -95,7 +95,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>plugin</finalName>
+		<finalName>jfinal-plugin</finalName>
 		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
 		<resources>
