@@ -55,7 +55,7 @@ public class VelocityLayoutRender extends Render {
         properties.setProperty(Velocity.OUTPUT_ENCODING, getEncoding());
         properties.setProperty(Velocity.VM_LIBRARY_AUTORELOAD, PropKit.use(configfile).get("library.directory"));
         Velocity.init(properties);
-        //优先获取Velocity配置参数，如果配置参数为空则获取后面默认会值
+        
         errorTmple = VelocityLayoutRender.properties.getProperty("tools.view.servlet.error.template", PropKit.use(configfile).get("error.template"));
         layoutDir = VelocityLayoutRender.properties.getProperty("tools.view.servlet.layout.directory",PropKit.use(configfile).get("layout.directory"));
         defaultLayout = VelocityLayoutRender.properties.getProperty("tools.view.servlet.layout.default.template",PropKit.use(configfile).get("default.template"));
@@ -113,7 +113,7 @@ public class VelocityLayoutRender extends Render {
             }
 
             Template template = null;
-            //读取宏
+            //read library
             Object objlibrary = context.get("library");
             String library = (objlibrary == null) ? null : objlibrary.toString();
             library = library == null ? libraryDir+defaultLibrar : libraryDir+library;
@@ -127,18 +127,18 @@ public class VelocityLayoutRender extends Render {
                 }
             }
             StringWriter bodyContent = new StringWriter();
-            //合并宏
+            //merge library
             template.merge(context, bodyContent);
             
-            //读取视图
+            //read view
             template = Velocity.getTemplate(view);            
             StringWriter viewcontent = new StringWriter();
-            //将视图写到sw
+            //view write to tmp
             template.merge(context, viewcontent);
             //将sw放入 content Map
             context.put("screen_content", viewcontent.toString());
                         
-            //读取模板 合并模板
+            //merge tmp
             response.setContentType("text/html;charset=" + getEncoding());
             writer = response.getWriter(); 
             Object objlayout = context.get("layout");
@@ -153,7 +153,7 @@ public class VelocityLayoutRender extends Render {
                         template = Velocity.getTemplate(defaultLayout);
                 }
             }
-            //合并模板
+            //merge tmp
             template.merge(context, writer);             
             // flush and cleanup
             writer.flush(); 
@@ -166,7 +166,7 @@ public class VelocityLayoutRender extends Render {
                 // TODO Auto-generated catch block
                 logger.error("Service Error message: ", e);
             }
-            //合并模板
+            //merge tmp
             context.put("error_cause", e.fillInStackTrace());
             template.merge(context, writer);             
             // flush and cleanup
