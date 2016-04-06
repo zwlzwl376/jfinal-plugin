@@ -1,4 +1,4 @@
-package com.jfinal.plugin.quartz;
+package net.oschina.zwlzwl376.jfinal.plugin.quartz;
 
 import static org.quartz.CronScheduleBuilder.cronSchedule;
 import static org.quartz.JobBuilder.newJob;

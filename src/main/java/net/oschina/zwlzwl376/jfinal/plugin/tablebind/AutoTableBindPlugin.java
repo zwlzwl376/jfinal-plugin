@@ -1,4 +1,4 @@
-package com.jfinal.plugin.tablebind;
+package net.oschina.zwlzwl376.jfinal.plugin.tablebind;
 
 import java.io.File;
 

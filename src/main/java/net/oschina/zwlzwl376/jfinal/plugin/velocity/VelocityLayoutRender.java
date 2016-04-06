@@ -1,4 +1,4 @@
-package com.jfinal.plugin.velocity;
+package net.oschina.zwlzwl376.jfinal.plugin.velocity;
 
 import java.io.IOException;
 import java.io.PrintWriter;

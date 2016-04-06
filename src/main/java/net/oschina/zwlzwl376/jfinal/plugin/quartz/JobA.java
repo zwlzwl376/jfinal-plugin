@@ -1,4 +1,4 @@
-package com.jfinal.plugin.quartz;
+package net.oschina.zwlzwl376.jfinal.plugin.quartz;
 
 import org.apache.log4j.Logger;
 import org.quartz.Job;

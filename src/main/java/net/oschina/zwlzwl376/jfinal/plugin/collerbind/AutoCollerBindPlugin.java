@@ -1,4 +1,4 @@
-package com.jfinal.plugin.collerbind;
+package net.oschina.zwlzwl376.jfinal.plugin.collerbind;
 
 import java.io.File;
 
