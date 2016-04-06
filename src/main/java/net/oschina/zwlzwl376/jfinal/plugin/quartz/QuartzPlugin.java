@@ -19,12 +19,23 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 定时器插件
+ * @author Along(ZengWeiLong)
+ * @ClassName: QuartzPlugin 
+ * @date 2016年4月6日 下午7:20:43 
+ *
+ */
 public class QuartzPlugin{
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(QuartzPlugin.class);
+    
     private SchedulerFactory sf = null;
+    
     private Scheduler sched = null;
+    
     private String config = "job.properties";
+    
     private Properties properties;
 
     public QuartzPlugin(String config) {
