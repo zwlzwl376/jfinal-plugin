@@ -33,6 +33,7 @@ public class VelocityLayoutRender extends Render {
 
     private static Logger log = Logger.getLogger(VelocityLayoutRender.class);
     
+    /*when serialization exclude properties*/
     private transient static final Properties properties = new Properties();
    
     private static String configfile = "velocity.properties";
@@ -176,7 +177,14 @@ public class VelocityLayoutRender extends Render {
                 writer.close();
         }
     }
-
+    
+    /**
+     * for jfinal factory 
+     * @author Along(ZengWeiLong)
+     * @ClassName: VelocityLayoutRenderFactory 
+     * @date 2016年4月6日 下午7:28:40 
+     *
+     */
     public static final class VelocityLayoutRenderFactory implements IMainRenderFactory {
 
         public Render getRender(String view) { 
