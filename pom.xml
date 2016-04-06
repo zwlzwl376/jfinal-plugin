@@ -4,7 +4,7 @@
 	<groupId>net.oschina.zwlzwl376</groupId>
 	<artifactId>jfinal-plugin</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>bind for jfinal2.2</name>
 	<description>auto scanner package</description>
 	<url>https://git.oschina.net/zwlzwl376/jfinal-plugin</url>
@@ -140,20 +140,6 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
