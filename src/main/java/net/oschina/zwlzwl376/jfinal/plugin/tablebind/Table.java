@@ -5,7 +5,13 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
+/**
+ * entity orm table Target
+ * @author Along(ZengWeiLong)
+ * @ClassName: Table 
+ * @date 2016年4月6日 下午7:24:15 
+ *
+ */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})

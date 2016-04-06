@@ -16,9 +16,10 @@ import com.jfinal.config.Routes;
  */
 public class AutoCollerBindPlugin {
 
-    private static Logger logger = Logger.getLogger(AutoCollerBindPlugin.class);
+    private static Logger log = Logger.getLogger(AutoCollerBindPlugin.class);
+    
     /**
-     * 包名
+     * packageName
      */
     private String packageName = "";
 
@@ -51,7 +52,7 @@ public class AutoCollerBindPlugin {
                     }
                 }
             } else {
-                logger.info(folder.getPath() + " == > No have file ");
+                log.info(folder.getPath() + " == > No have file ");
             }
         }
         return routes;
@@ -79,18 +80,18 @@ public class AutoCollerBindPlugin {
                            }else{
                                routes.add(maping, classes);
                            }
-                           logger.info(maping + " == > " + classes.getSimpleName());
+                           log.info(maping + " == > " + classes.getSimpleName());
                        }
                    }
                }
             }else{
                 String defaultMapping = "/" + name.toLowerCase().replace("controller", "");
                 routes.add(defaultMapping, classes);
-                logger.info(defaultMapping + " == > " + classes.getSimpleName());
+                log.info(defaultMapping + " == > " + classes.getSimpleName());
             }            
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("exception:" + e.getLocalizedMessage(), e);
+            log.error("exception:" + e.getLocalizedMessage(), e);
         }
         return routes;
     }

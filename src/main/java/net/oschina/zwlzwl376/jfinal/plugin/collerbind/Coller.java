@@ -6,6 +6,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * for collection name Target
+ * @author Along(ZengWeiLong)
+ * @ClassName: Coller 
+ * @date 2016年4月6日 下午7:24:59 
+ *
+ */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})

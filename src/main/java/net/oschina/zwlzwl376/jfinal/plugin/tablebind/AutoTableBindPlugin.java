@@ -15,7 +15,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
  */
 public class AutoTableBindPlugin {
 
-    private static Logger logger = Logger.getLogger(AutoTableBindPlugin.class);
+    private static Logger log = Logger.getLogger(AutoTableBindPlugin.class);
 
     private String packageName = "";
 
@@ -48,7 +48,7 @@ public class AutoTableBindPlugin {
                     }
                 }
             } else {
-                logger.info(folder.getPath() + " == > No have file ");
+                log.info(folder.getPath() + " == > No have file ");
             }
         }
         return arp;
@@ -68,10 +68,10 @@ public class AutoTableBindPlugin {
             }else{
                 arp.addMapping(name.toLowerCase(), classes);
             }
-            logger.info(name.toLowerCase() + " == > " + classes.getSimpleName());
+            log.info(name.toLowerCase() + " == > " + classes.getSimpleName());
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("exception:" + e.getLocalizedMessage(), e);
+            log.error("exception:" + e.getLocalizedMessage(), e);
         }
         return arp;
     }

@@ -31,7 +31,7 @@ import com.jfinal.render.Render;
  */
 public class VelocityLayoutRender extends Render {
 
-    private static Logger logger = Logger.getLogger(VelocityLayoutRender.class);
+    private static Logger log = Logger.getLogger(VelocityLayoutRender.class);
     
     private transient static final Properties properties = new Properties();
    
@@ -62,10 +62,10 @@ public class VelocityLayoutRender extends Render {
         libraryDir = VelocityLayoutRender.properties.getProperty("tools.view.servlet.library.directory", PropKit.use(configfile).get("library.directory"));
         defaultLibrar = VelocityLayoutRender.properties.getProperty("tools.view.servlet.default.library", PropKit.use(configfile).get("default.library"));
         // preventive error checking! directory must end in /
-        logger.info("VelocityRender: Error screen is '" + errorTmple + "'");
-        logger.info("VelocityRender: Layout directory is '" + layoutDir + "'");
-        logger.info("VelocityRender: Default layout template is '" + layoutDir + defaultLayout + "'");
-        logger.info("VelocityRender: Default library template is '" + libraryDir + defaultLibrar + "'");
+        log.info("VelocityRender: Error screen is '" + errorTmple + "'");
+        log.info("VelocityRender: Layout directory is '" + layoutDir + "'");
+        log.info("VelocityRender: Default layout template is '" + layoutDir + defaultLayout + "'");
+        log.info("VelocityRender: Default library template is '" + libraryDir + defaultLibrar + "'");
     }
 
     
@@ -121,7 +121,7 @@ public class VelocityLayoutRender extends Render {
                 // load the layout template
                 template = Velocity.getTemplate(library);
             } catch (ResourceNotFoundException e) {
-                logger.error("Can't load layout " + library, e);
+                log.error("Can't load layout " + library, e);
                 if (!library.equals(defaultLibrar)) {
                     template = Velocity.getTemplate(defaultLibrar);
                 }
@@ -148,7 +148,7 @@ public class VelocityLayoutRender extends Render {
                 // load the layout template
                 template = Velocity.getTemplate(layout);
             } catch (ResourceNotFoundException e) {
-                logger.error("Can't load layout " + layout, e);
+                log.error("Can't load layout " + layout, e);
                 if (!layout.equals(defaultLayout)) {
                         template = Velocity.getTemplate(defaultLayout);
                 }
@@ -164,7 +164,7 @@ public class VelocityLayoutRender extends Render {
                 writer = response.getWriter();
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
-                logger.error("Service Error message: ", e);
+                log.error("Service Error message: ", e);
             }
             //merge tmp
             context.put("error_cause", e.fillInStackTrace());

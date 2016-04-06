@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 定时器插件
+ * config job.properties run
  * @author Along(ZengWeiLong)
  * @ClassName: QuartzPlugin 
  * @date 2016年4月6日 下午7:20:43 
@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  */
 public class QuartzPlugin{
 
-    private Logger logger = LoggerFactory.getLogger(QuartzPlugin.class);
+    private static Logger log = LoggerFactory.getLogger(QuartzPlugin.class);
     
     private SchedulerFactory sf = null;
     
@@ -82,7 +82,7 @@ public class QuartzPlugin{
             } catch (SchedulerException ee) {
                 new RuntimeException(ee);
             }
-            logger.info(job.getKey() + " has been scheduled to run at: " + ft + " and repeat based on expression: "
+            log.info(job.getKey() + " has been scheduled to run at: " + ft + " and repeat based on expression: "
                     + trigger.getCronExpression());
         }
         return true;
@@ -106,7 +106,7 @@ public class QuartzPlugin{
         try {
             sched.shutdown();
         } catch (SchedulerException e) {
-            logger.error("shutdown error", e);
+            log.error("shutdown error", e);
             return false;
         }
         return true;
