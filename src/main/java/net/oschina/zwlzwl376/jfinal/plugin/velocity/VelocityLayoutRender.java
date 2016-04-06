@@ -182,7 +182,7 @@ public class VelocityLayoutRender extends Render {
      * for jfinal factory 
      * @author Along(ZengWeiLong)
      * @ClassName: VelocityLayoutRenderFactory 
-     * @date 2016年4月6日 下午7:28:40 
+     * @date 2016-4-6 19:28:40 
      *
      */
     public static final class VelocityLayoutRenderFactory implements IMainRenderFactory {
