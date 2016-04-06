@@ -4,7 +4,7 @@
 	<groupId>net.oschina.zwlzwl376</groupId>
 	<artifactId>jfinal-plugin</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>bind for jfinal2.2</name>
 	<description>auto scanner package</description>
 	<url>https://git.oschina.net/zwlzwl376/jfinal-plugin</url>
