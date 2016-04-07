@@ -3,6 +3,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/javadoc"/>
         <property name="java-output-path" value="/jfinal-plugin/target/classes"/>
         <property name="context-root" value="jfinal-plugin"/>
     </wb-module>

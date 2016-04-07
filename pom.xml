@@ -137,8 +137,8 @@
 					<fork>true</fork>
 					<source>1.8</source>
 					<target>1.8</target>
-					<charset>utf8</charset>
-					<encoding>utf8</encoding>
+					<charset>UTF-8</charset>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
