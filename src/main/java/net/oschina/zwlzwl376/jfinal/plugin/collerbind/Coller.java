@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * for collection name Target
  * @author Along(ZengWeiLong)
  * @ClassName: Coller 
- * @date 2016年4月6日 下午7:24:59 
+ * @date 2016-4-6 19:24:59 
  *
  */
 @Inherited

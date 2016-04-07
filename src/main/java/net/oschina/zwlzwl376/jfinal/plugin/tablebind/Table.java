@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * entity orm table Target
  * @author Along(ZengWeiLong)
  * @ClassName: Table 
- * @date 2016年4月6日 下午7:24:15 
+ * @date 2016-4-6 19:24:15 
  *
  */
 @Inherited
