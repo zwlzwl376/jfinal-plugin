@@ -6,11 +6,13 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+
 /**
- * Auto scanner tools  for Jfinal2.2
+ * Auto scanner tools for Jfinal2.2
+ * 
  * @author Along(ZengWeiLong)
- * @ClassName: AutoTableBindPlugin 
- * @date 2016-3-20 10:42:52 
+ * @ClassName: AutoTableBindPlugin
+ * @date 2016-3-20 10:42:52
  *
  */
 public class AutoTableBindPlugin {
@@ -60,19 +62,37 @@ public class AutoTableBindPlugin {
             String name = filename.substring(0, filename.length() - 6);
             Class classes = Thread.currentThread().getContextClassLoader().loadClass(packageName + "." + name);
             Table table = (Table) classes.getAnnotation(Table.class);
-            if(table != null){
-                String tableName = table.value(); 
-                if(StringUtils.isNotEmpty(tableName)){
+            name = this.underscoreName(name);
+            if (table != null) {
+                String tableName = table.value();
+                if (StringUtils.isNotEmpty(tableName)) {
                     arp.addMapping(tableName, classes);
                 }
-            }else{
-                arp.addMapping(name.toLowerCase(), classes);
+            } else {
+                arp.addMapping(name, classes);
             }
-            log.info(name.toLowerCase() + " == > " + classes.getSimpleName());
+            log.info(name + " == > " + classes.getSimpleName());
         } catch (Exception e) {
             e.printStackTrace();
             log.error("exception:" + e.getLocalizedMessage(), e);
         }
         return arp;
+    }
+
+    private String underscoreName(String name) {
+        StringBuilder result = new StringBuilder();
+        if ((name != null) && (name.length() > 0)) {
+            result.append(name.substring(0, 1).toLowerCase());
+            for (int i = 1; i < name.length(); ++i) {
+                String s = name.substring(i, i + 1);
+                if (s.equals(s.toUpperCase())) {
+                    result.append("_");
+                    result.append(s.toLowerCase());
+                } else {
+                    result.append(s);
+                }
+            }
+        }
+        return result.toString();
     }
 }
