@@ -62,7 +62,7 @@ public class AutoTableBindPlugin {
             String name = filename.substring(0, filename.length() - 6);
             Class classes = Thread.currentThread().getContextClassLoader().loadClass(packageName + "." + name);
             Table table = (Table) classes.getAnnotation(Table.class);
-            name = this.underscoreName(name);
+            name = BindUtils.underscoreName(name);
             if (table != null) {
                 String tableName = table.value();
                 if (StringUtils.isNotEmpty(tableName)) {
@@ -77,22 +77,5 @@ public class AutoTableBindPlugin {
             log.error("exception:" + e.getLocalizedMessage(), e);
         }
         return arp;
-    }
-
-    private String underscoreName(String name) {
-        StringBuilder result = new StringBuilder();
-        if ((name != null) && (name.length() > 0)) {
-            result.append(name.substring(0, 1).toLowerCase());
-            for (int i = 1; i < name.length(); ++i) {
-                String s = name.substring(i, i + 1);
-                if (s.equals(s.toUpperCase())) {
-                    result.append("_");
-                    result.append(s.toLowerCase());
-                } else {
-                    result.append(s);
-                }
-            }
-        }
-        return result.toString();
     }
 }
