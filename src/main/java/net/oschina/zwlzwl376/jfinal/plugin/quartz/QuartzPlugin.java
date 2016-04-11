@@ -4,11 +4,8 @@ import static org.quartz.CronScheduleBuilder.cronSchedule;
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.Properties;
 
 import org.quartz.CronTrigger;
 import org.quartz.JobDetail;
@@ -18,6 +15,9 @@ import org.quartz.SchedulerFactory;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.jfinal.kit.Prop;
+import com.jfinal.kit.PropKit;
 
 /**
  * config job.properties run
@@ -36,13 +36,15 @@ public class QuartzPlugin{
     
     private String config = "job.properties";
     
-    private Properties properties;
-
-    public QuartzPlugin(String config) {
-        this.config = config;
-    }
+    private Prop prop = null;
 
     public QuartzPlugin() {
+        prop = PropKit.use(config);
+    }
+    
+    public QuartzPlugin(String config) {
+        this.config = config;
+        prop = PropKit.use(this.config);
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -51,26 +53,28 @@ public class QuartzPlugin{
         try {
             sched = sf.getScheduler();
         } catch (SchedulerException e) {
+            log.error(e.getMessage(),e);
             new RuntimeException(e);
         }
-        this.loadProperties();
-        Enumeration enums = properties.keys();
+        Enumeration enums = prop.getProperties().keys();
         while (enums.hasMoreElements()) {
-            String key = enums.nextElement() + "";
-            if (!key.endsWith("job")) {
+            String jobkey = enums.nextElement()+"";
+            if (!jobkey.endsWith("job")) {
                 continue;
             }
-            String cronKey = key.substring(0, key.indexOf("job")) + "cron";
-            String enable = key.substring(0, key.indexOf("job")) + "enable";
-            if (isDisableJob(enable)) {
+            String headkey = jobkey.substring(0, jobkey.indexOf("job"));
+            String cronKey = headkey + "cron";
+            String enableKey = headkey + "enable";
+            if (isDisableJob(enableKey)) {
                 continue;
             }
-            String jobClassName = properties.get(key) + "";
-            String jobCronExp = properties.getProperty(cronKey) + "";
+            String jobClassName = prop.get(jobkey) + "";
+            String jobCronExp = prop.get(cronKey) + "";
             Class clazz;
             try {
                 clazz = Class.forName(jobClassName);
             } catch (ClassNotFoundException e) {
+                log.error(e.getMessage(),e);
                 throw new RuntimeException(e);
             }
             JobDetail job = newJob(clazz).withIdentity(jobClassName, jobClassName).build();
@@ -79,27 +83,18 @@ public class QuartzPlugin{
             try {
                 ft = sched.scheduleJob(job, trigger);
                 sched.start();
-            } catch (SchedulerException ee) {
-                new RuntimeException(ee);
+            } catch (SchedulerException e) {
+                log.error(e.getMessage(),e);
+                new RuntimeException(e);
             }
-            log.info(job.getKey() + " has been scheduled to run at: " + ft + " and repeat based on expression: "
-                    + trigger.getCronExpression());
+            log.info(job.getKey() + " has been scheduled to run at: " + ft + " and repeat based on expression: "+ trigger.getCronExpression());
         }
         return true;
     }
 
-    private boolean isDisableJob(String enable) {
-        return Boolean.valueOf(properties.get(enable) + "") == false;
-    }
-
-    private void loadProperties() {
-        properties = new Properties();
-        InputStream is = QuartzPlugin.class.getClassLoader().getResourceAsStream(config);
-        try {
-            properties.load(is);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    /*close open*/
+    private boolean isDisableJob(String enableKey) {
+        return prop.getBoolean(enableKey) == false;
     }
 
     public boolean stop() {
