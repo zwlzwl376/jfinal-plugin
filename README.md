@@ -2,6 +2,14 @@
 
 旧项目地址：https://git.oschina.net/zengweilong/plugin.git
 
+#Maven 坐标
+
+<dependency>
+  <groupId>net.oschina.zwlzwl376</groupId>
+  <artifactId>jfinal-plugin</artifactId>
+  <version>0.0.1</version>
+</dependency>
+
 #AutoCollerBindPlugin
 路由插件启动:
 
