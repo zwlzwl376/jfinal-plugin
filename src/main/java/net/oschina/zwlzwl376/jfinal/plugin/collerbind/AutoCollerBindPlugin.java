@@ -9,9 +9,9 @@ import com.jfinal.config.Routes;
 
 /**
  * Auto scanner tools  for Jfinal2.2
- * @author Along(ZengWeiLong)
- * @ClassName: AutoCollerBindPlugin 
- * @date 2016-3-20 10:42:52 
+ * Along(ZengWeiLong)
+ * AutoCollerBindPlugin 
+ * 2016-3-20 10:42:52 
  *
  */
 public class AutoCollerBindPlugin {
@@ -25,8 +25,8 @@ public class AutoCollerBindPlugin {
 
     /**
      * 
-     * @Author Along(ZengWeiLong)
-     * @param packageName path com.web.entity
+     * Along(ZengWeiLong)
+     * packageName path com.web.entity
      */
     public AutoCollerBindPlugin(String packageName) {
         this.packageName = packageName;

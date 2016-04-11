@@ -21,9 +21,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * config job.properties run
- * @author Along(ZengWeiLong)
- * @ClassName: QuartzPlugin 
- * @date 2016-4-6 19:20:43 
+ * Along(ZengWeiLong)
+ * QuartzPlugin 
+ * 2016-4-6 19:20:43 
  *
  */
 public class QuartzPlugin{

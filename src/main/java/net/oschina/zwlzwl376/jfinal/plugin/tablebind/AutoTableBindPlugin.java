@@ -10,9 +10,9 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 /**
  * Auto scanner tools for Jfinal2.2
  * 
- * @author Along(ZengWeiLong)
- * @ClassName: AutoTableBindPlugin
- * @date 2016-3-20 10:42:52
+ * Along(ZengWeiLong)
+ * AutoTableBindPlugin
+ * 2016-3-20 10:42:52
  *
  */
 public class AutoTableBindPlugin {
@@ -22,9 +22,8 @@ public class AutoTableBindPlugin {
     private String packageName = "";
 
     /**
-     * 
-     * @Author Along(ZengWeiLong)
-     * @param packageName com.web.entity
+     * Along(ZengWeiLong)
+     * packageName com.web.entity
      */
     public AutoTableBindPlugin(String packageName) {
         this.packageName = packageName;

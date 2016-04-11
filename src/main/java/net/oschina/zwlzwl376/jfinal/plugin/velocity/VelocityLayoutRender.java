@@ -24,9 +24,9 @@ import com.jfinal.render.IMainRenderFactory;
 import com.jfinal.render.Render;
 
 /**
- * @author Along(ZengWeiLong)
- * @ClassName: VelocityLayoutRender
- * @date 2016-3-14 16:14:20
+ * Along(ZengWeiLong)
+ * VelocityLayoutRender
+ * 2016-3-14 16:14:20
  *
  */
 public class VelocityLayoutRender extends Render {
@@ -78,9 +78,9 @@ public class VelocityLayoutRender extends Render {
     /**
      * default value set
      * 
-     * @Author:ALong (ZengWeiLong)
-     * @param properties void
-     * @date 2016-3-14
+     * ALong (ZengWeiLong)
+     * properties void
+     * 2016-3-14
      */
     public static void setProperties(Properties properties) {
         Set<Entry<Object, Object>> set = properties.entrySet();
@@ -180,9 +180,9 @@ public class VelocityLayoutRender extends Render {
     
     /**
      * for jfinal factory 
-     * @author Along(ZengWeiLong)
-     * @ClassName: VelocityLayoutRenderFactory 
-     * @date 2016-4-6 19:28:40 
+     * Along(ZengWeiLong)
+     * VelocityLayoutRenderFactory 
+     * 2016-4-6 19:28:40 
      *
      */
     public static final class VelocityLayoutRenderFactory implements IMainRenderFactory {

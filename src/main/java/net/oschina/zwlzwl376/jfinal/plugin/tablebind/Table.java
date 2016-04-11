@@ -7,9 +7,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 /**
  * entity orm table Target
- * @author Along(ZengWeiLong)
- * @ClassName: Table 
- * @date 2016-4-6 19:24:15 
+ * Along(ZengWeiLong)
+ * Table 
+ * 2016-4-6 19:24:15 
  *
  */
 @Inherited

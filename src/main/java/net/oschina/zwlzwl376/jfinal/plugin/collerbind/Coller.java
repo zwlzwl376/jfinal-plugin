@@ -8,9 +8,9 @@ import java.lang.annotation.Target;
 
 /**
  * for collection name Target
- * @author Along(ZengWeiLong)
- * @ClassName: Coller 
- * @date 2016-04-06 19:24:59 
+ *  Along(ZengWeiLong)
+ *  Coller 
+ * 2016-04-06 19:24:59 
  *
  */
 @Inherited
@@ -20,16 +20,15 @@ public @interface Coller {
     /**
      * The value may indicate a suggestion for a logical component name,
      * to be turned into a Spring bean in case of an autodetected component.
-     * @return the suggested component name, if any
+     * the suggested component name, if any
      */
     String[] value() default {};
     
     /**
      * 
-     * @Author:ALong (ZengWeiLong)
-     * @return    
+     * :ALong (ZengWeiLong)
      * String[]
-     * @date 2016-3-28
+     * 2016-3-28
      */
     String[] views() default "";
 }
