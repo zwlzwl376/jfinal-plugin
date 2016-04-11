@@ -9,7 +9,7 @@ public class TableTest {
 
     @Test
     public void underscoreName(){
-        String tableName = BindUtils.underscoreName("tableNameTest");
+        String tableName = BindUtils.underscoreName("TableNameTest");
         System.out.println(tableName);
     }
 }
