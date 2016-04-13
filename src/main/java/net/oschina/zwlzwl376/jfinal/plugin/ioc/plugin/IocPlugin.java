@@ -3,10 +3,10 @@ package net.oschina.zwlzwl376.jfinal.plugin.ioc.plugin;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 import net.oschina.zwlzwl376.jfinal.plugin.ioc.annotation.Ioc;
 import net.oschina.zwlzwl376.jfinal.plugin.utils.BindUtils;
@@ -22,11 +22,11 @@ public class IocPlugin implements IPlugin {
 
     private static boolean isSingleton;
 
-    private static final Map<Object, Class<?>> interClazzMap = new HashMap<Object, Class<?>>(); // type-class表
+    private static final Map<Object, Class<?>> interClazzMap = new ConcurrentHashMap<Object, Class<?>>();
 
-    private static final Map<String, Class<?>> nameClazzMap = new HashMap<String, Class<?>>(); // name-class表
+    private static final Map<String, Class<?>> nameClazzMap = new ConcurrentHashMap<String, Class<?>>();
 
-    private static final Map<Object, Object> instanceMap = new HashMap<Object, Object>(); // 实例表
+    private static final Map<Object, Object> instanceMap = new ConcurrentHashMap<Object, Object>();
 
     /**
      * Along(ZengWeiLong)
