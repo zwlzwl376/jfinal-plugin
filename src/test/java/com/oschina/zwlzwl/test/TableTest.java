@@ -2,7 +2,7 @@ package com.oschina.zwlzwl.test;
 
 import org.junit.Test;
 
-import net.oschina.zwlzwl376.jfinal.plugin.tablebind.BindUtils;
+import net.oschina.zwlzwl376.jfinal.plugin.utils.BindUtils;
 
 
 public class TableTest {

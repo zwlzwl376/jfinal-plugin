@@ -1,6 +1,9 @@
 package net.oschina.zwlzwl376.jfinal.plugin.collerbind;
 
 import java.io.File;
+import java.util.List;
+
+import net.oschina.zwlzwl376.jfinal.plugin.utils.FileSearch;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -33,31 +36,17 @@ public class AutoCollerBindPlugin {
     }
 
     public Routes start(Routes routes) {
-        String path = packageName.replace(".", File.separator);
-        String root = this.getClass().getResource("/").toString().substring(6);
-        File filePath = new File(root + path);
-        return loop(filePath, packageName, routes);
-    }
-
-    private Routes loop(File folder, String packageName, Routes routes) {
-        if (folder != null) {
-            File[] files = folder.listFiles();
-            if (files != null) {
-                for (int fileIndex = 0; fileIndex < files.length; fileIndex++) {
-                    File file = files[fileIndex];
-                    if (file.isDirectory()) {
-                        routes = loop(file, packageName + file.getName() + ".", routes);
-                    } else {
-                        routes = listMethodNames(file.getName(), packageName, routes);
-                    }
-                }
-            } else {
-                log.info(folder.getPath() + " == > No have file ");
-            }
+        File pagePath = new File(this.getClass().getResource("/" + packageName.replaceAll("\\.", "/")).getFile());
+        if (!pagePath.exists() || !pagePath.isDirectory()) {
+            return null;
+        }
+        List<File> fileList = FileSearch.scannPage(pagePath.getAbsolutePath(), "*.class");
+        for (int i = 0; i < fileList.size(); i++) {
+            routes = this.listMethodNames(fileList.get(i).getName(), packageName, routes);
         }
         return routes;
     }
-
+    
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private Routes listMethodNames(String filename, String packageName, Routes routes) {
         try {

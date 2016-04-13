@@ -4,7 +4,7 @@
 	<groupId>net.oschina.zwlzwl376</groupId>
 	<artifactId>jfinal-plugin</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>bind for jfinal2.2</name>
 	<description>auto scanner package</description>
 	<url>https://git.oschina.net/zwlzwl376/jfinal-plugin</url>
@@ -26,7 +26,7 @@
 		<connection>scm:git:https://git.oschina.net/zwlzwl376/jfinal-plugin.git</connection>
 		<developerConnection>scm:git:https://git.oschina.net/zwlzwl376/jfinal-plugin.git</developerConnection>
 		<url>https://git.oschina.net/zwlzwl376/jfinal-plugin</url>
-		<tag>v0.0.1</tag>
+		<tag>v0.0.2</tag>
 	</scm>
 	<dependencies>
 		<dependency>
@@ -92,6 +92,11 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm-commons</artifactId>
+			<version>3.3.1</version>
 		</dependency>
 	</dependencies>
 	<distributionManagement>

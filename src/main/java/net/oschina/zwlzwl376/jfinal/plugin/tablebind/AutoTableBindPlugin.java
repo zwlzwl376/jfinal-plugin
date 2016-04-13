@@ -1,6 +1,10 @@
 package net.oschina.zwlzwl376.jfinal.plugin.tablebind;
 
 import java.io.File;
+import java.util.List;
+
+import net.oschina.zwlzwl376.jfinal.plugin.utils.BindUtils;
+import net.oschina.zwlzwl376.jfinal.plugin.utils.FileSearch;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -30,27 +34,13 @@ public class AutoTableBindPlugin {
     }
 
     public ActiveRecordPlugin start(ActiveRecordPlugin arp) {
-        String path = packageName.replace(".", File.separator);
-        String root = this.getClass().getResource("/").toString().substring(6);
-        File filePath = new File(root + path);
-        return loop(filePath, packageName, arp);
-    }
-
-    private ActiveRecordPlugin loop(File folder, String packageName, ActiveRecordPlugin arp) {
-        if (folder != null) {
-            File[] files = folder.listFiles();
-            if (files != null) {
-                for (int fileIndex = 0; fileIndex < files.length; fileIndex++) {
-                    File file = files[fileIndex];
-                    if (file.isDirectory()) {
-                        arp = loop(file, packageName + file.getName() + ".", arp);
-                    } else {
-                        arp = listMethodNames(file.getName(), packageName, arp);
-                    }
-                }
-            } else {
-                log.info(folder.getPath() + " == > No have file ");
-            }
+        File pagePath = new File(this.getClass().getResource("/" + packageName.replaceAll("\\.", "/")).getFile());
+        if (!pagePath.exists() || !pagePath.isDirectory()) {
+            return null;
+        }
+        List<File> fileList = FileSearch.scannPage(pagePath.getAbsolutePath(), "*.class");
+        for (int i = 0; i < fileList.size(); i++) {
+            arp = this.listMethodNames(fileList.get(i).getName(), packageName, arp);
         }
         return arp;
     }

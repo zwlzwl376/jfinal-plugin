@@ -1,7 +1,11 @@
-package net.oschina.zwlzwl376.jfinal.plugin.tablebind;
+package net.oschina.zwlzwl376.jfinal.plugin.utils;
 
 public class BindUtils {
 
+    /**
+     * 
+     * TableName -- table_name
+     */
     public static String underscoreName(String name) {
         StringBuilder result = new StringBuilder();
         if ((name != null) && (name.length() > 0)) {
@@ -17,5 +21,14 @@ public class BindUtils {
             }
         }
         return result.toString();
+    }
+
+    /**
+     * TableName -- tableName
+     */
+    public static String headLower(String className) {
+        String firstLetter = className.substring(0, 1);
+        String beanName = className.replace(firstLetter, firstLetter.toLowerCase());
+        return beanName;
     }
 }
