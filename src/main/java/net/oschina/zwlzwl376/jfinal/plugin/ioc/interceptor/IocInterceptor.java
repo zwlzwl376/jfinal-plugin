@@ -12,7 +12,7 @@ import com.jfinal.aop.Invocation;
 /**
  * Ioc injection Interceptor
  */
-public class DependencyInjectionInterceptor implements Interceptor{
+public class IocInterceptor implements Interceptor{
 	@Override
 	public void intercept(Invocation inv) {
 		try{

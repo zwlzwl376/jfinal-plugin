@@ -19,6 +19,8 @@ import org.objectweb.asm.tree.ClassNode;
 import com.jfinal.plugin.IPlugin;
 
 public class IocPlugin implements IPlugin {
+    
+    private static Logger log = Logger.getLogger(IocPlugin.class);
 
     private static boolean isSingleton;
 
@@ -43,7 +45,7 @@ public class IocPlugin implements IPlugin {
             ClassReader reader = null;
             ClassNode cn = null;
             try {
-                reader = new ClassReader(new FileInputStream(file.getAbsolutePath())); // 解析class文件
+                reader = new ClassReader(new FileInputStream(file.getAbsolutePath())); 
                 cn = new ClassNode();
             } catch (IOException e1) {
                 e1.printStackTrace();
@@ -121,7 +123,7 @@ public class IocPlugin implements IPlugin {
     @Override
     public boolean start() {
         for (Entry<Object, Object> entry : instanceMap.entrySet()) {
-            Logger.getLogger(this.getClass()).info(entry.getKey() + " - " + entry.getValue() + " has been created");
+            log.info(entry.getKey() + " - " + entry.getValue() + " has been created");
         }
         return true;
     }
