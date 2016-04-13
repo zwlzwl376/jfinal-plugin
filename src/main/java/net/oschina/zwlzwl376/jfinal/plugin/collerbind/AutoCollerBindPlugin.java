@@ -3,7 +3,7 @@ package net.oschina.zwlzwl376.jfinal.plugin.collerbind;
 import java.io.File;
 import java.util.List;
 
-import net.oschina.zwlzwl376.jfinal.plugin.utils.FileSearch;
+import net.oschina.zwlzwl376.jfinal.plugin.utils.FileScanner;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -40,7 +40,7 @@ public class AutoCollerBindPlugin {
         if (!pagePath.exists() || !pagePath.isDirectory()) {
             return null;
         }
-        List<File> fileList = FileSearch.scannPage(pagePath.getAbsolutePath(), "*.class");
+        List<File> fileList = FileScanner.scannPage(pagePath.getAbsolutePath(), "*.class");
         for (int i = 0; i < fileList.size(); i++) {
             routes = this.listMethodNames(fileList.get(i).getName(), packageName, routes);
         }

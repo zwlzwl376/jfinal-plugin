@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 
 import net.oschina.zwlzwl376.jfinal.plugin.ioc.annotation.Ioc;
 import net.oschina.zwlzwl376.jfinal.plugin.utils.BindUtils;
-import net.oschina.zwlzwl376.jfinal.plugin.utils.FileSearch;
+import net.oschina.zwlzwl376.jfinal.plugin.utils.FileScanner;
 
 import org.apache.log4j.Logger;
 import org.objectweb.asm.ClassReader;
@@ -38,7 +38,7 @@ public class IocPlugin implements IPlugin {
         if (!dir.exists() || !dir.isDirectory()) {
             return null;
         }
-        List<File> fileList = FileSearch.scannPage(dir.getAbsolutePath(), "*.class");
+        List<File> fileList = FileScanner.scannPage(dir.getAbsolutePath(), "*.class");
         for (File file : fileList) {
             ClassReader reader = null;
             ClassNode cn = null;

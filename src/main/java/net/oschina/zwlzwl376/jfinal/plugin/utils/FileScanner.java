@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
   
-public class FileSearch { 
+public class FileScanner { 
     
-    private static Logger log = Logger.getLogger(FileSearch.class);
+    private static Logger log = Logger.getLogger(FileScanner.class);
     
 	public static List<File> scannPage(String baseDir, String fileName){
 	    List<File> fileList = new ArrayList<File>();
