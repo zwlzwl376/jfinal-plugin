@@ -2,6 +2,8 @@ package net.oschina.zwlzwl376.jfinal.plugin.ioc.interceptor;
 
 import java.lang.reflect.Field;
 
+import org.apache.commons.lang.StringUtils;
+
 import net.oschina.zwlzwl376.jfinal.plugin.ioc.annotation.Autowired;
 import net.oschina.zwlzwl376.jfinal.plugin.ioc.annotation.Resource;
 import net.oschina.zwlzwl376.jfinal.plugin.ioc.plugin.IocPlugin;
@@ -21,7 +23,7 @@ public class IocInterceptor implements Interceptor{
 				if(f!=null && f.isAnnotationPresent(Resource.class)){
 					Resource resource = f.getAnnotation(Resource.class);
 					Object value = null;
-					if(resource.value()!=null&&!"".equals(resource.value())){
+					if(StringUtils.isEmpty(resource.value())){
 						value = IocPlugin.getInstance(resource.value());
 					}else{
 						value = IocPlugin.getInstance(f.getName());
@@ -29,7 +31,7 @@ public class IocInterceptor implements Interceptor{
 					f.setAccessible(true);
 					f.set(inv.getController(), value);
 				}
-	
+				
 				if(f!=null && f.isAnnotationPresent(Autowired.class)){
 					Object value = null;
 					value = IocPlugin.getInstance(f.getType());

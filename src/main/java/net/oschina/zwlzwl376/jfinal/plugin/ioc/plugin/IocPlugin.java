@@ -21,9 +21,7 @@ import com.jfinal.plugin.IPlugin;
 public class IocPlugin implements IPlugin {
     
     private static Logger log = Logger.getLogger(IocPlugin.class);
-
-    private static boolean isSingleton;
-
+    
     private static final Map<Object, Class<?>> interClazzMap = new ConcurrentHashMap<Object, Class<?>>();
 
     private static final Map<String, Class<?>> nameClazzMap = new ConcurrentHashMap<String, Class<?>>();
@@ -34,8 +32,7 @@ public class IocPlugin implements IPlugin {
      * Along(ZengWeiLong)
      * packageName com.web.entity
      */
-    public IocPlugin addPackage(String packageName, boolean isSingleton) {
-        IocPlugin.isSingleton = isSingleton;
+    public IocPlugin addPackage(String packageName) {
         File dir = new File(this.getClass().getResource("/" + packageName.replaceAll("\\.", "/")).getFile());
         if (!dir.exists() || !dir.isDirectory()) {
             return null;
@@ -57,9 +54,9 @@ public class IocPlugin implements IPlugin {
                 Class<?>[] interfaces = clazz.getInterfaces();
                 Ioc ioc = clazz.getAnnotation(Ioc.class);
                 if (ioc != null) {
-                    if (isSingleton) {
+                    if (ioc.singleton()) {
                         if (ioc.value().equals("")) {
-                            instanceMap.put(BindUtils.headLower(clazz.getSimpleName()), clazz.newInstance()); 
+                            instanceMap.put(BindUtils.headLower(clazz.getSimpleName()),clazz.newInstance()); 
                         } else {
                             instanceMap.put(ioc.value(), clazz.newInstance());
                         }
@@ -94,22 +91,26 @@ public class IocPlugin implements IPlugin {
     }
 
     public static Object getInstance(String name) {
-        if (isSingleton) {
-            return instanceMap.get(name);
-        } else {
-            try {
-                return nameClazzMap.get(name).newInstance();
-            } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
+        Class<?> clazz = nameClazzMap.get(name);
+        if(clazz != null){
+            Ioc ioc = clazz.getAnnotation(Ioc.class);
+            if (ioc.singleton()) {
+                return instanceMap.get(name);
+            } else {
+                try {
+                    return nameClazzMap.get(name).newInstance();
+                } catch (InstantiationException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return null;
-
     }
 
     public static Object getInstance(Class<?> clazz) {
         try {
-            if (isSingleton) {
+            Ioc ioc = clazz.getAnnotation(Ioc.class);
+            if (ioc.singleton()) {
                 return instanceMap.get(clazz);
             } else {
                 return clazz.newInstance();
@@ -131,14 +132,6 @@ public class IocPlugin implements IPlugin {
     @Override
     public boolean stop() {
         return false;
-    }
-
-    public static boolean isSingleton() {
-        return isSingleton;
-    }
-
-    public static void setSingleton(boolean isSingleton) {
-        IocPlugin.isSingleton = isSingleton;
     }
 
 }

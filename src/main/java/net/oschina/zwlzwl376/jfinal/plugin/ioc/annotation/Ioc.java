@@ -13,5 +13,9 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Ioc {
+    
 	public String value() default "";
+	
+	//class load pattern
+	public boolean singleton() default true;
 }
