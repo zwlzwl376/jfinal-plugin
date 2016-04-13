@@ -120,13 +120,30 @@
 
 
 
-#dev 分支
+#dev 分支 IOC插件
 
-增加Ioc for jfinal 该插件将在v0.0.2版本中更新，通过拦截器，注解方式实现。由于该版本尚在开发阶段暂不支持事务，优化了扫描机制
+1.增加Ioc for jfinal 该插件将在v0.0.2版本中更新，通过拦截器，注解方式实现。由于该版本尚在开发阶段暂不支持事务，优化了扫描机制
+
+2.使用方法：
+
+```
+
+    public void configPlugin(Plugins me) {
+        IocPlugin iocPlugin = new IocPlugin();
+        iocPlugin.addPackage("com.project.web.service");
+        me.add(iocPlugin);
 
 
+    public void configInterceptor(Interceptors me) {
+	     me.add(new IocInterceptor());
 
 
+    @Autowired
+    private UserService userService;
 
 
+	 @Ioc(singleton = true)
+	 public class UserService {
+	 
 
+```
