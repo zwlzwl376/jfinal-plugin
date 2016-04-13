@@ -19,9 +19,9 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
  * 2016-3-20 10:42:52
  *
  */
-public class AutoTableBindPlugin {
+public class TablesScanner {
 
-    private static Logger log = Logger.getLogger(AutoTableBindPlugin.class);
+    private static Logger log = Logger.getLogger(TablesScanner.class);
 
     private String packageName = "";
 
@@ -29,7 +29,7 @@ public class AutoTableBindPlugin {
      * Along(ZengWeiLong)
      * packageName com.web.entity
      */
-    public AutoTableBindPlugin(String packageName) {
+    public TablesScanner(String packageName) {
         this.packageName = packageName;
     }
 

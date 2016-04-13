@@ -17,9 +17,9 @@ import com.jfinal.config.Routes;
  * 2016-3-20 10:42:52 
  *
  */
-public class AutoCollerBindPlugin {
+public class RoutesScanner {
 
-    private static Logger log = Logger.getLogger(AutoCollerBindPlugin.class);
+    private static Logger log = Logger.getLogger(RoutesScanner.class);
     
     /**
      * packageName
@@ -31,7 +31,7 @@ public class AutoCollerBindPlugin {
      * Along(ZengWeiLong)
      * packageName path com.web.entity
      */
-    public AutoCollerBindPlugin(String packageName) {
+    public RoutesScanner(String packageName) {
         this.packageName = packageName;
     }
 
