@@ -22,7 +22,7 @@
 	
         RoutesScanner abp = new RoutesScanner("com.project.web.controller");
 		
-		  abp.addScanner("com.project.entity.model2");
+		  abp.addScanner("com.project.web.controller2");
 		
         abp.start(me);
 		
