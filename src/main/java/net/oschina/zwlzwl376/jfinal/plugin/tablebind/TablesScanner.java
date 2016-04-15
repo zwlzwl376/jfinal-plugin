@@ -73,13 +73,13 @@ public class TablesScanner {
                 if (StringUtils.isNotBlank(tableName)) {
                     String pkName = table.pkName();
                     if(StringUtils.isNotBlank(pkName)){
-                        arp.addMapping(tableName,pkName,classes);
+                        arp.addMapping(tableName.trim(),pkName.trim(),classes);
                     }else{
-                        arp.addMapping(tableName,classes);
+                        arp.addMapping(tableName.trim(),classes);
                     }
                 }
             } else {
-                arp.addMapping(name, classes);
+                arp.addMapping(name.trim(), classes);
             }
             log.info(name + " == > " + classes.getSimpleName());
         } catch (Exception e) {

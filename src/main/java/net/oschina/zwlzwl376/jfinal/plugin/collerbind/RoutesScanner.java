@@ -77,14 +77,14 @@ public class RoutesScanner {
                        }
                        if(StringUtils.isNotBlank(maping)){
                            if(StringUtils.isNotBlank(path)){
-                               routes.add(maping, classes, path);
+                               routes.add(maping.trim(), classes, path.trim());
                                log.info(maping + " == > " + classes.getSimpleName() + " path = " + path);
                            }else{
-                               routes.add(maping, classes);
+                               routes.add(maping.trim(), classes);
                                log.info(maping + " == > " + classes.getSimpleName());
                            }
                        }else{
-                           routes.add(maping, classes);
+                           routes.add(maping.trim(), classes);
                            log.info(maping + " == > " + classes.getSimpleName());
                        }
                    }
