@@ -67,7 +67,7 @@ public class RoutesScanner {
             Coller coller = (Coller) classes.getAnnotation(Coller.class);
             if(coller != null){
                String[] strArray = coller.value();
-               String[] views = coller.views();
+               String[] views = coller.path();
                if(strArray != null){
                    for(int i = 0 ; i < strArray.length; i++){
                        String maping = strArray[i];
