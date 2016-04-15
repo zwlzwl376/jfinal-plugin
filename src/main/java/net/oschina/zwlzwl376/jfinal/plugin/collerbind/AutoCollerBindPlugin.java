@@ -74,12 +74,12 @@ public class AutoCollerBindPlugin {
                        if(paths != null && paths.length > i){
                            path = paths[i];
                        }
-                       if(StringUtils.isNotEmpty(maping)){
-                           if(StringUtils.isNotEmpty(path)){
-                               routes.add(maping, classes, path);
+                       if(StringUtils.isNotBlank(maping)){
+                           if(StringUtils.isNotBlank(path)){
+                               routes.add(maping.trim(), classes, path.trim());
                                log.info(maping + " == > " + classes.getSimpleName() + " path = "+ path);
                            }else{
-                               routes.add(maping, classes);
+                               routes.add(maping.trim(), classes);
                                log.info(maping + " == > " + classes.getSimpleName());
                            }
                        }
