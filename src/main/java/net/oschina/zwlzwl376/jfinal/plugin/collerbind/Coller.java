@@ -30,5 +30,5 @@ public @interface Coller {
      * String[]
      * 2016-3-28
      */
-    String[] path() default "";
+    String[] path() default {};
 }

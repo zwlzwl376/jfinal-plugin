@@ -71,17 +71,18 @@ public class RoutesScanner {
                if(mapings != null){
                    for(int i = 0 ; i < mapings.length; i++){
                        String maping = mapings[i];
-                       String path = null;
-                       if(paths != null && paths.length > i){
-                           path = paths[i];
-                       }
                        if(StringUtils.isNotBlank(maping)){
-                           if(StringUtils.isNotBlank(path)){
-                               routes.add(maping, classes, path);
+                           String path = null;
+                           if(paths != null && paths.length > i){
+                               path = paths[i];
+                               if(StringUtils.isNotBlank(path)){
+                                   routes.add(maping, classes, path);
+                               }else{
+                                   routes.add(maping, classes);
+                               }
                            }else{
                                routes.add(maping, classes);
                            }
-                           log.info(maping + " == > " + classes.getSimpleName());
                        }
                    }
                }
