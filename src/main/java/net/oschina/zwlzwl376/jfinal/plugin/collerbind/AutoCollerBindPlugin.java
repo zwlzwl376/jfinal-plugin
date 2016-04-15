@@ -66,17 +66,17 @@ public class AutoCollerBindPlugin {
             Coller coller = (Coller) classes.getAnnotation(Coller.class);
             if(coller != null){
                String[] strArray = coller.value();
-               String[] views = coller.views();
+               String[] paths = coller.path();
                if(strArray != null){
                    for(int i = 0 ; i < strArray.length; i++){
                        String maping = strArray[i];
-                       String view = null;
-                       if(views != null && views.length > i){
-                           view = views[i];
+                       String path = null;
+                       if(paths != null && paths.length > i){
+                           path = paths[i];
                        }
                        if(StringUtils.isNotEmpty(maping)){
-                           if(StringUtils.isNotEmpty(view)){
-                               routes.add(maping, classes,view);
+                           if(StringUtils.isNotEmpty(path)){
+                               routes.add(maping, classes,path);
                            }else{
                                routes.add(maping, classes);
                            }

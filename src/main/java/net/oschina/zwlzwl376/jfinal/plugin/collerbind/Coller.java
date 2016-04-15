@@ -22,7 +22,7 @@ public @interface Coller {
      * to be turned into a Spring bean in case of an autodetected component.
      * the suggested component name, if any
      */
-    String[] value() default {};
+    String[] value() default "";
     
     /**
      * 
@@ -30,5 +30,5 @@ public @interface Coller {
      * String[]
      * 2016-3-28
      */
-    String[] views() default "";
+    String[] path() default "";
 }
