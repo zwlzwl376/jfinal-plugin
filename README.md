@@ -43,13 +43,13 @@
 	
 	或
 	
-	@Coller(value="/user",views="page") 
+	@Coller(value="/user",path="page") 
 	
 	public class UserController extends Controller {
 	
 	或
 	
-	@Coller(value={"/user"},views={"page"})
+	@Coller(value={"/user"},path={"page"})
 	
 	public class UserController extends Controller {
 ```

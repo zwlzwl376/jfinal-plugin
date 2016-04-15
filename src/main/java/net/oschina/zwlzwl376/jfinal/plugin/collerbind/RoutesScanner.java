@@ -66,18 +66,18 @@ public class RoutesScanner {
             Class classes = Thread.currentThread().getContextClassLoader().loadClass(packageName + "." + name);
             Coller coller = (Coller) classes.getAnnotation(Coller.class);
             if(coller != null){
-               String[] strArray = coller.value();
-               String[] views = coller.path();
-               if(strArray != null){
-                   for(int i = 0 ; i < strArray.length; i++){
-                       String maping = strArray[i];
-                       String view = null;
-                       if(views != null && views.length > i){
-                           view = views[i];
+               String[] mapings = coller.value();
+               String[] paths = coller.path();
+               if(mapings != null){
+                   for(int i = 0 ; i < mapings.length; i++){
+                       String maping = mapings[i];
+                       String path = null;
+                       if(paths != null && paths.length > i){
+                           path = paths[i];
                        }
-                       if(StringUtils.isNotEmpty(maping)){
-                           if(StringUtils.isNotEmpty(view)){
-                               routes.add(maping, classes,view);
+                       if(StringUtils.isNotBlank(maping)){
+                           if(StringUtils.isNotBlank(path)){
+                               routes.add(maping, classes, path);
                            }else{
                                routes.add(maping, classes);
                            }
