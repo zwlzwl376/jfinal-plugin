@@ -65,22 +65,23 @@ public class AutoCollerBindPlugin {
             Class classes = Thread.currentThread().getContextClassLoader().loadClass(packageName + "." + name);
             Coller coller = (Coller) classes.getAnnotation(Coller.class);
             if(coller != null){
-               String[] strArray = coller.value();
+               String[] mapings = coller.value();
                String[] paths = coller.path();
-               if(strArray != null){
-                   for(int i = 0 ; i < strArray.length; i++){
-                       String maping = strArray[i];
+               if(mapings != null){
+                   for(int i = 0 ; i < mapings.length; i++){
+                       String maping = mapings[i];
                        String path = null;
                        if(paths != null && paths.length > i){
                            path = paths[i];
                        }
                        if(StringUtils.isNotEmpty(maping)){
                            if(StringUtils.isNotEmpty(path)){
-                               routes.add(maping, classes,path);
+                               routes.add(maping, classes, path);
+                               log.info(maping + " == > " + classes.getSimpleName() + " path = "+ path);
                            }else{
                                routes.add(maping, classes);
+                               log.info(maping + " == > " + classes.getSimpleName());
                            }
-                           log.info(maping + " == > " + classes.getSimpleName());
                        }
                    }
                }

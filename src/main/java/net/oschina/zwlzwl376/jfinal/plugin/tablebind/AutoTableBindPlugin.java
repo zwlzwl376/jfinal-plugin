@@ -61,14 +61,14 @@ public class AutoTableBindPlugin {
             String name = filename.substring(0, filename.length() - 6);
             Class classes = Thread.currentThread().getContextClassLoader().loadClass(packageName + "." + name);
             Table table = (Table) classes.getAnnotation(Table.class);
-            name = BindUtils.underscoreName(name);
+            String tableName = BindUtils.underscoreName(name);
             if (table != null) {
-                String tableName = table.value();
-                if (StringUtils.isNotEmpty(tableName)) {
-                    arp.addMapping(tableName, classes);
+                tableName = table.value();
+                if (StringUtils.isNotBlank(tableName)) {
+                    arp.addMapping(tableName.trim(), classes);
                 }
             } else {
-                arp.addMapping(name, classes);
+                arp.addMapping(tableName, classes);
             }
             log.info(name + " == > " + classes.getSimpleName());
         } catch (Exception e) {
