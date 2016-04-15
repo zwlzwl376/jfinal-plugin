@@ -1,6 +1,7 @@
 package net.oschina.zwlzwl376.jfinal.plugin.collerbind;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import net.oschina.zwlzwl376.jfinal.plugin.utils.FileScanner;
@@ -21,10 +22,7 @@ public class RoutesScanner {
 
     private static Logger log = Logger.getLogger(RoutesScanner.class);
     
-    /**
-     * packageName
-     */
-    private String packageName = "";
+    private List<String> packages = new ArrayList<String>();
 
     /**
      * 
@@ -32,17 +30,27 @@ public class RoutesScanner {
      * packageName path com.web.entity
      */
     public RoutesScanner(String packageName) {
-        this.packageName = packageName;
+        if(StringUtils.isNotBlank(packageName)){
+            this.packages.add(packageName);
+        }
+    }
+    
+    public void addScanner(String packageName) {
+        if(StringUtils.isNotBlank(packageName)){
+            this.packages.add(packageName);
+        }
     }
 
     public Routes start(Routes routes) {
-        File pagePath = new File(this.getClass().getResource("/" + packageName.replaceAll("\\.", "/")).getFile());
-        if (!pagePath.exists() || !pagePath.isDirectory()) {
-            return null;
-        }
-        List<File> fileList = FileScanner.scannPage(pagePath.getAbsolutePath(), "*.class");
-        for (int i = 0; i < fileList.size(); i++) {
-            routes = this.listMethodNames(fileList.get(i).getName(), packageName, routes);
+        for(String packageName:packages){
+            File pagePath = new File(this.getClass().getResource("/" + packageName.replaceAll("\\.", "/")).getFile());
+            if (!pagePath.exists() || !pagePath.isDirectory()) {
+                return null;
+            }
+            List<File> fileList = FileScanner.scannPage(pagePath.getAbsolutePath(), "*.class");
+            for (int i = 0; i < fileList.size(); i++) {
+                routes = this.listMethodNames(fileList.get(i).getName(), packageName, routes);
+            }
         }
         return routes;
     }

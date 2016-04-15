@@ -14,13 +14,15 @@
 ```
 
 
-#AutoCollerBindPlugin
+#RoutesScanner
 路由插件启动:
 ```
 
     public void configRoute(Routes me) {
 	
-        AutoCollerBindPlugin abp = new AutoCollerBindPlugin("com.project.web.controller");
+        RoutesScanner abp = new RoutesScanner("com.project.web.controller");
+		
+		  abp.addScanner("com.project.entity.model2");
 		
         abp.start(me);
 		
@@ -51,14 +53,16 @@
 	
 	public class UserController extends Controller {
 ```
-#AutoTableBindPlugin
+#TablesScanner
 2.表插件启动：
 ```
 
     public void configPlugin(Plugins me) {
+    	
+        TablesScanner tables = new TablesScanner("com.project.entity.model");
 	
-        AutoTableBindPlugin tables = new AutoTableBindPlugin("com.project.entity.model");
-		
+		  tables.addScanner("com.project.entity.model2");
+   
         tables.start(arp);
     }
 

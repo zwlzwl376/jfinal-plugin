@@ -1,6 +1,7 @@
 package net.oschina.zwlzwl376.jfinal.plugin.tablebind;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import net.oschina.zwlzwl376.jfinal.plugin.utils.BindUtils;
@@ -23,24 +24,34 @@ public class TablesScanner {
 
     private static Logger log = Logger.getLogger(TablesScanner.class);
 
-    private String packageName = "";
+    private List<String> packages = new ArrayList<String>();
 
     /**
      * Along(ZengWeiLong)
-     * packageName com.web.entity
+     * package com.web.entity
      */
     public TablesScanner(String packageName) {
-        this.packageName = packageName;
+        if(StringUtils.isNotBlank(packageName)){
+            this.packages.add(packageName);
+        }
+    }
+    
+    public void addScanner(String packageName) {
+        if(StringUtils.isNotBlank(packageName)){
+            this.packages.add(packageName);
+        }
     }
 
     public ActiveRecordPlugin start(ActiveRecordPlugin arp) {
-        File pagePath = new File(this.getClass().getResource("/" + packageName.replaceAll("\\.", "/")).getFile());
-        if (!pagePath.exists() || !pagePath.isDirectory()) {
-            return null;
-        }
-        List<File> fileList = FileScanner.scannPage(pagePath.getAbsolutePath(), "*.class");
-        for (int i = 0; i < fileList.size(); i++) {
-            arp = this.listMethodNames(fileList.get(i).getName(), packageName, arp);
+        for(String packageName:packages){
+            File pagePath = new File(this.getClass().getResource("/" + packageName.replaceAll("\\.", "/")).getFile());
+            if (!pagePath.exists() || !pagePath.isDirectory()) {
+                return null;
+            }
+            List<File> fileList = FileScanner.scannPage(pagePath.getAbsolutePath(), "*.class");
+            for (int i = 0; i < fileList.size(); i++) {
+                arp = this.listMethodNames(fileList.get(i).getName(), packageName, arp);
+            }
         }
         return arp;
     }
@@ -54,8 +65,13 @@ public class TablesScanner {
             name = BindUtils.underscoreName(name);
             if (table != null) {
                 String tableName = table.value();
-                if (StringUtils.isNotEmpty(tableName)) {
-                    arp.addMapping(tableName, classes);
+                if (StringUtils.isNotBlank(tableName)) {
+                    String pkName = table.pkName();
+                    if(StringUtils.isNotBlank(pkName)){
+                        arp.addMapping(tableName,pkName,classes);
+                    }else{
+                        arp.addMapping(tableName,classes);
+                    }
                 }
             } else {
                 arp.addMapping(name, classes);
