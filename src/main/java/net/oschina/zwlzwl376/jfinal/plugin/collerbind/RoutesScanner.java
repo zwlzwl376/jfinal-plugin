@@ -24,6 +24,10 @@ public class RoutesScanner {
     
     private List<String> packages = new ArrayList<String>();
 
+    public RoutesScanner(){
+        
+    }
+    
     /**
      * 
      * Along(ZengWeiLong)

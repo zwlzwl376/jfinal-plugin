@@ -26,6 +26,11 @@ public class TablesScanner {
 
     private List<String> packages = new ArrayList<String>();
 
+    
+    public TablesScanner(){
+        
+    }
+
     /**
      * Along(ZengWeiLong)
      * package com.web.entity
