@@ -8,7 +8,7 @@
 	<dependency>
 	  <groupId>net.oschina.zwlzwl376</groupId>
 	  <artifactId>jfinal-plugin</artifactId>
-	  <version>0.0.1</version>
+	  <version>0.0.2</version>
 	</dependency>
 
 ```
@@ -97,7 +97,7 @@
 该插件需要配置velocity.properties 文件，支持宏/模板/toolbox.xml工具等。
 
 
-#QuartzPlugin (源码来自社区qq群 由qq-->322076903上传，本人在此收集，并做调整)
+#QuartzPlugin
 
 
 4.定时器插件
